@@ -13,6 +13,7 @@ class Transaction {
       required this.price,
       required this.date, this.id});
 
+  /// Create a transaction from a Map<String, dynamic> that is returned by APIs
   factory Transaction.fromMap(Map<String, dynamic> singleTransactionMap) {
     final properties = singleTransactionMap['properties'];
     final nameList = (properties['Name']?['title'] ?? []) as List;
@@ -25,6 +26,7 @@ class Transaction {
         date: dateStr != null ? DateTime.parse(dateStr) : DateTime.now());
   }
 
+  /// Implements the toJson method to serialize a new transaction
   Map<String, dynamic> toJson() => {
         "parent": {
           "database_id": dotenv.env["NOTION_DATABASE_ID_TRANSACTIONS"]

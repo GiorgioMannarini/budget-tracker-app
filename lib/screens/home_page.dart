@@ -18,15 +18,15 @@ class BudgetTrackerHomePage extends StatefulWidget {
 
 class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
   late Future<List<Transaction>> _futureItems;
-  late Future<double> monthlyBudget;
   int _monthToVisualize = DateTime.now().month;
   int _yearToVisualize = DateTime.now().year;
   ExpensesApi apiClient = ExpensesApi();
   bool isLoading = false;
-
+  late Future<double> monthlyBudget;
   double spent = 0;
   double available = 0;
 
+  /// At the render of the component we set the monthly budget and we fetch the data
   @override
   void initState() {
     super.initState();
@@ -46,16 +46,16 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
             setState(() {});
           },
           child: FutureBuilder(
-            future: Future.wait([_futureItems, monthlyBudget]),
+            future: Future.wait([_futureItems, monthlyBudget]), // We wait for the two futures to load, one from the web and the other from the storage
             builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
               if (snapshot.hasData) {
                 spent = 0;
                 // Display transactions of the considered month (by default the last one)
                 final transactionsToDisplay =
                     _transactionsToVisualize(snapshot.data![0]);
-                transactionsToDisplay.forEach((transaction) {
+                for (var transaction in transactionsToDisplay) {
                   spent += transaction.price;
-                });
+                }
                 final monthlyBudget = snapshot.data![1];
                 available = monthlyBudget - spent;
                 return Column(
@@ -77,7 +77,9 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
                     ),
                     isLoading
                         ? Column(children: const [
-                          SizedBox(height: 30,),
+                            SizedBox(
+                              height: 30,
+                            ),
                             CircularProgressIndicator(color: Colors.grey)
                           ])
                         : Expanded(
@@ -115,13 +117,16 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
                 // Show failure error message.
                 return const Center(child: Text('Error'));
               }
-              return const Center(child: CircularProgressIndicator(color: Colors.grey,));
+              return const Center(
+                  child: CircularProgressIndicator(
+                color: Colors.grey,
+              ));
             },
           ),
         ),
       ),
       floatingActionButton: PlusButton(
-        function: _enterTransactionForm,
+        onPressed: _enterTransactionForm,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
@@ -182,6 +187,7 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
         });
   }
 
+  /// Function to delete a transaction and refresh the state
   void _deleteTransaction(transaction) {
     apiClient
         .deleteTransaction(transaction)
@@ -189,6 +195,8 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
         .then((_) => {setState(() {})});
   }
 
+  /// Function to change the visualized month. In particular we can't go
+  /// further than the current month and back in time more than Jan 2022
   void _changeMonth(bool toPrevious) {
     if (toPrevious &&
         DateTime(_yearToVisualize, _monthToVisualize, 01)

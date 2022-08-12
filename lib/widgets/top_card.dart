@@ -5,8 +5,8 @@ class TopNeuCard extends StatefulWidget {
   final String remainingBudget;
   final String spent;
   final String dateText;
-  final setNewBudget;
-  final changeMonth;
+  final Function setNewBudget;
+  final Function changeMonth;
 
 
   const TopNeuCard({
@@ -63,7 +63,7 @@ class _TopNeuCardState extends State<TopNeuCard> {
                               color: Colors.grey[200],
                             ),
                             child: GestureDetector(
-                              onTap: widget.setNewBudget,
+                              onTap: () {widget.setNewBudget();},
                               child: const Center(
                                 child: Icon(
                                   Icons.arrow_upward,

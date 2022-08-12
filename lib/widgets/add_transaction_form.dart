@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AddTransactionForm extends StatefulWidget {
-  Function enterTransaction;
+  final Function enterTransaction; // From parent, to change its state
 
-  AddTransactionForm({Key? key, required this.enterTransaction})
+  const AddTransactionForm({Key? key, required this.enterTransaction})
       : super(key: key);
 
   @override
@@ -15,7 +15,6 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
   String _selectedCategory = "Food";
   final _textcontrollerAMOUNT = TextEditingController();
   final _textcontrollerNAME = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +135,7 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
     );
   }
 
-  /// These are the accepted categories
+  /// These are the accepted categories that show up in the dropdown
   List<DropdownMenuItem<String>> get dropdownItems {
     List<DropdownMenuItem<String>> menuItems = [
       const DropdownMenuItem(child: Text("Food"), value: "Food"),

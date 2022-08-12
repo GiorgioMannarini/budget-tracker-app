@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ChangeBudgetForm extends StatelessWidget {
-  final Function setNewBudget;
-  TextEditingController _budgetController = TextEditingController();
+  final Function setNewBudget; //from parent to set its state
+  final TextEditingController _budgetController = TextEditingController();
 
   ChangeBudgetForm ({Key? key,
     required this.setNewBudget
