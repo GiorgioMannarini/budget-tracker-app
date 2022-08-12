@@ -121,9 +121,11 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
               child: const Text('Enter', style: TextStyle(color: Colors.white)),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  // Convert comma in dot
+                  final amount = _textcontrollerAMOUNT.text.replaceFirst(',', '.');
                   widget.enterTransaction(
                       _textcontrollerNAME.text,
-                      double.parse(_textcontrollerAMOUNT.text),
+                      double.parse(amount),
                       _selectedCategory);
                   Navigator.of(context).pop();
                 }
