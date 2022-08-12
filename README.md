@@ -10,9 +10,7 @@ Part of the design is copied from templates I found online.
 <img src="https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/main.PNG" width="350">
 
 #### Add a new transaction
-
-![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/add.PNG)
+<img src="https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/add.PNG" width="350">
 
 #### Change budget
-
-![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/budget.PNG)
+<img src="https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/budget.PNG" width="350">
