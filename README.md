@@ -8,12 +8,12 @@ Part of the design is copied from templates I found online.
 ## Screenshots
 #### Main screen
 
-![alt text](./readme-images/main.png)
+![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/main.PNG)
 
 #### Add a new transaction
 
-![alt text](./readme-images/add.png)
+![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/add.PNG)
 
 #### Change budget
 
-![alt text](./readme-images/budget.png)
+![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/budget.PNG)
