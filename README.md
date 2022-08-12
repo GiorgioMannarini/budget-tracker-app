@@ -8,7 +8,7 @@ Part of the design is copied from templates I found online.
 ## Screenshots
 #### Main screen
 
-![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/main.PNG)
+![alt text](https://github.com/GiorgioMannarini/budget-tracker-app/blob/main/readme-images/main.PNG | width=100)
 
 #### Add a new transaction
 
