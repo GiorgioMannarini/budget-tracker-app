@@ -46,7 +46,8 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
             setState(() {});
           },
           child: FutureBuilder(
-            future: Future.wait([_futureItems, monthlyBudget]), // We wait for the two futures to load, one from the web and the other from the storage
+            future: Future.wait([_futureItems, monthlyBudget]),
+            // We wait for the two futures to load, one from the web and the other from the storage
             builder: (context, AsyncSnapshot<List<dynamic>> snapshot) {
               if (snapshot.hasData) {
                 spent = 0;
@@ -105,6 +106,29 @@ class _BudgetTrackerHomePageState extends State<BudgetTrackerHomePage> {
                                             icon: _getCategoryIcon(
                                                 transaction.category),
                                             transaction: transaction),
+                                        background: Padding(
+                                          padding:
+                                              EdgeInsets.only(bottom: 12.0),
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(10),
+                                                    bottomRight:
+                                                        Radius.circular(10))),
+                                            alignment:
+                                                AlignmentDirectional.centerEnd,
+                                            child: const Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  0.0, 0.0, 20.0, 0.0),
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       );
                                     }),
                           ),

@@ -23,9 +23,7 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
         return AlertDialog(
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('T R A N S A C T I O N')
-            ],
+            children: const [Text('T R A N S A C T I O N')],
           ),
           content: SingleChildScrollView(
             child: Column(
@@ -122,11 +120,10 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   // Convert comma in dot
-                  final amount = _textcontrollerAMOUNT.text.replaceFirst(',', '.');
-                  widget.enterTransaction(
-                      _textcontrollerNAME.text,
-                      double.parse(amount),
-                      _selectedCategory);
+                  final amount =
+                      _textcontrollerAMOUNT.text.replaceFirst(',', '.');
+                  widget.enterTransaction(_textcontrollerNAME.text,
+                      double.parse(amount), _selectedCategory);
                   Navigator.of(context).pop();
                 }
               },
@@ -145,10 +142,8 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
           child: Text("Entertainment"), value: "Entertainment"),
       const DropdownMenuItem(
           child: Text("Transportation"), value: "Transportation"),
-      const DropdownMenuItem(
-          child: Text("Personal"), value: "Personal"),
-      const DropdownMenuItem(
-          child: Text("Home"), value: "Home"),
+      const DropdownMenuItem(child: Text("Personal"), value: "Personal"),
+      const DropdownMenuItem(child: Text("Home"), value: "Home"),
       const DropdownMenuItem(child: Text("Other"), value: "Other"),
     ];
     return menuItems;
